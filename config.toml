@@ -1,8 +1,9 @@
-baseurl = "http://schwid.com/" # Hostname (and path) to the root.
+﻿baseurl = "http://schwid.com/" # Hostname (and path) to the root.
 title = "Alex Shvid" # Site title.
 theme = "coder-portfolio" # Set the theme.
 languagecode = "en" # The site’s language code used to generate RSS.
 defaultcontentlanguage = "en" # The default content language.
+googleAnalytics = "UA-135001306-1"
 
 paginate = 20 # Default number of pages per page in pagination.
 
@@ -15,7 +16,7 @@ disqusShortname = "alexshvid" # Enable or disable Disqus.
 
 [params] # theme parameters
     author = "Alex Shvid" # Author's name.
-    info = "Deep Learnung Engineer" # Author's job title or info.
+    info = "Deep Learning Engineer" # Author's job title or info.
     description = "Alex Shvid's personal website" # Site description.
     keywords = "blog,developer,personal" # Site keywords.
     avatarurl = "images/avatar.jpg" # Contain the path of the optionnal avatar in the static folder.
