@@ -58,6 +58,10 @@ disqusShortname = "alexshvid" # Enable or disable Disqus.
     name = "LinkedIn"
     weight = 3
     url = "https://www.linkedin.com/in/shvid/"
+[[params.social]]
+    name = "Coursera"
+    weight = 3
+    url = "https://www.coursera.org/user/31898fcfbc971277ff1bf1ffea5bb619"
 
 # Menu links
 [[menu.main]]
@@ -65,6 +69,10 @@ disqusShortname = "alexshvid" # Enable or disable Disqus.
     weight = 1
     url  = "posts"
 [[menu.main]]
-    name = "About"
+    name = "Projects"
     weight = 2
-    url = "about"
+    url  = "projects"
+[[menu.main]]
+    name = "Resume"
+    weight = 3
+    url = "resume"
