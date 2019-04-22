@@ -33,7 +33,7 @@ Explanation: The answer is "wke", with the length of 3.
 ### Solution
 
 Golang:
-```
+``` go
 func lengthOfLongestSubstring(s string) int {
 
     n := len(s)

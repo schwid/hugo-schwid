@@ -34,7 +34,7 @@ Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-
 ### Solution
 
 Golang:
-```
+``` go
 func maxProfit(k int, prices []int) int {
 
 	n := len(prices)

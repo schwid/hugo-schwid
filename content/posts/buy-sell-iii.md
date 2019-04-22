@@ -41,7 +41,7 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 ### Solution
 
 Golang:
-```
+``` go
 func maxProfit(prices []int) int {
 
 	n := len(prices)

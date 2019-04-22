@@ -1,40 +1,74 @@
 +++
-title = "Alex Shvid Resume"
+title = "Resume"
 slug = "resume"
 thumbnail = "images/tn.png"
 description = "resume"
 +++
 
----------------------------
-This theme is created based on [hugo-coder](https://github.com/luizdepra/hugo-coder).  
-I made it possible to tell yourself more by my change.   
-Please see "FeaturesOfCoderPortfolio" in the post about the change.
-Regarding other demo contents, it is hugo-coder's thing.  
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/naro143/hugo-coder-portfolio/issues/new) or [ask me on Twitter](https://twitter.com/naro143).
+## OBJECTIVE
+
+Most relevant positions:
+
++ Data Architect
++ Data Scientist
++ Deep Learning Researcher  
++ Backend Software Developer  
++ Blockchain Platform Developer
+
+In sphere of my interests:
+
++ Deep Learning: Machine Learning, Supervised Learning and Reinforcement Learning.
++ Fast Data: Key-Value distributed storages that used for cache and hot data, low-latency systems, five-nines systems.
++ Big Data: Spark and streaming analytics, Hadoop and MapReduce classic offline jobs, big data storages HBase and Cassandra.
++ Blockchain: platform and framework development.
+
+
+Active participant in open source communities, committer, researcher.
 
 ---------------------------
 
-Hugo is a static site engine written in Go.
+## WORK EXPERIENCE
 
+| Start   | End     | Company        | Position  | Location   |
+| :----:  | :-----: | :------------: | :-------: | :----------:|
+|  2013   | current |    [PayPal](https://www.paypal.com)      | MTS II    | San Jose, USA |
+|  2011   | 2013    |   [Mirantis](http://mirantis.com)     | Consultant | USA, Argentina, Moscow  |
+|  2008   | 2011  |     [Deutsche Bank](https://db.com)  | Sr.Specialist |  Moscow, New York |
+|  2006   | 2008  |  [HeadHunter](https://hh.ru)      |  Project Manager | Moscow |
+|  2002   | 2005  | [Penza State University](https://en.wikipedia.org/wiki/Penza_State_University) | Scientist | Penza |
+---------------------------
 
-It makes use of a variety of open source projects including:
+## ACHIEVEMENTS AND AWARDS
 
-* [Cobra](https://github.com/spf13/cobra)
-* [Viper](https://github.com/spf13/viper)
-* [J Walter Weatherman](https://github.com/spf13/jWalterWeatherman)
-* [Cast](https://github.com/spf13/cast)
+| Year   | Title  |
+| :----:  | :------------: |
+|  2018   | 3 Patent applications submitted to USPTO |
 
-Learn more and contribute on [GitHub](https://github.com/spf13).
+---------------------------
 
-## Setup
+## EDUCATION
 
-Some fun facts about [Hugo](http://gohugo.io/):
+| Year(s)     | Title                         | Organization  | Location  |
+| :---------: | :---------------------------: | :-----------: | :-------: |
+| 2016        | Deep Learning School          | Stanford      | CA,USA    |
+| 2012-2014   | Master of Business Administration | City Business School | Moscow, online |
+| 2002-2005   | School of Economics and Management, Postgraduate course | Penza State University | Penza, Russia |
+| 1997-2002   | Master of Science in Applied Mathematics and Economics, with honors | Penza State University | Penza, Russia |
 
-* Built in [Go](http://golang.org/)
-* Loosely inspired by [Jekyll](http://jekyllrb.com/)
-* Primarily developed by [spf13](http://spf13.com/) on the train while commuting to and from Manhattan.
-* Coded in [Vim](http://vim.org) using [spf13-vim](http://vim.spf13.com/)
+---------------------------
 
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/spf13/hugo/issues/new) or [ask me on Twitter](https://twitter.com/spf13).
+## CERTIFICATION AND TRAININGS
 
-Thanks for reading!
+| Year(s)     | Title                         | Organization  | Location  |
+| :---------: | :---------------------------: | :-----------: | :-------: |
+| 2013-now    | [Certificates](https://www.coursera.org/user/31898fcfbc971277ff1bf1ffea5bb619)  | Coursera   | CA,USA    |
+| 2009 | Oracle Coherence | TDTEX | Moscow
+| 2009 | Core Spring | Spring Source | Moscow
+
+---------------------------
+
+## LANGUAGES
+
+* English: fluent
+* Russian: native
+* Ukrainian: read-write
