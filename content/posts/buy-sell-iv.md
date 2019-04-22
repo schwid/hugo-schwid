@@ -44,14 +44,7 @@ func maxProfit(k int, prices []int) int {
 	}
 
 	if k >= n/2 {
-		pnl := 0
-		for i := 1; i < n; i++ {
-			profitOrLoss := prices[i] - prices[i-1]
-			if profitOrLoss > 0 {
-				pnl += profitOrLoss
-			}
-		}
-		return pnl
+    return maxProfitUnlimited(prices)
 	}
 
 	maxSoFar := make([]int, k+1)
@@ -73,6 +66,23 @@ func maxProfit(k int, prices []int) int {
 	}
 
 	return profit[k]
+}
+
+func maxProfitUnlimited(prices []int) int {
+
+    n := len(prices)
+
+    if n <= 1 {
+        return 0
+    }
+
+    profit := 0
+
+    for i := 1; i < n; i++ {
+        profit += max(0, prices[i] - prices[i-1])
+    }
+
+    return profit
 }
 
 func min(a, b int) int {

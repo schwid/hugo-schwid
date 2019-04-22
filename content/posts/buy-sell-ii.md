@@ -44,20 +44,27 @@ func maxProfit(prices []int) int {
 
     n := len(prices)
 
-    if n == 0 {
+    if n <= 1 {
         return 0
     }
+    
+    profit := 0
 
-    pnl := 0
-	for i := 1; i < n; i++ {
-		profitOrLoss := prices[i] - prices[i-1]
-		if profitOrLoss > 0 {
-			pnl += profitOrLoss
-		}
-	}
-	return pnl
+    for i := 1; i < n; i++ {
+        profit += max(0, prices[i] - prices[i-1])
+    }
 
+    return profit
 }
+
+func max(a,b int) int {
+    if a >= b {
+        return a
+    } else {
+        return b
+    }
+}
+
 ```
 
 ### Explanation
