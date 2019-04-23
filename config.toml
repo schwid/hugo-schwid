@@ -47,9 +47,9 @@ disqusShortname = "alexshvid" # Enable or disable Disqus.
 
 # Social links
 [[params.social]]
-    name = "Github"
+    name = "Medium"
     weight = 1
-    url = "https://github.com/alexshvid/"
+    url = "https://medium.com/@alexshvid"
 [[params.social]]
     name = "Twitter"
     weight = 2
@@ -59,20 +59,24 @@ disqusShortname = "alexshvid" # Enable or disable Disqus.
     weight = 3
     url = "https://www.linkedin.com/in/shvid/"
 [[params.social]]
-    name = "Coursera"
-    weight = 3
-    url = "https://www.coursera.org/user/31898fcfbc971277ff1bf1ffea5bb619"
+    name = "Github"
+    weight = 5
+    url = "https://github.com/alexshvid/"
 
 # Menu links
 [[menu.main]]
     name = "Blog"
     weight = 1
     url  = "posts"
-[[menu.main]]
-    name = "Projects"
-    weight = 2
-    url  = "projects"
+#[[menu.main]]
+#    name = "Projects"
+#    weight = 2
+#    url  = "projects"
 [[menu.main]]
     name = "Resume"
     weight = 3
     url = "resume"
+[[menu.main]]
+    name = "Coursera"
+    weight = 4
+    url = "https://www.coursera.org/user/31898fcfbc971277ff1bf1ffea5bb619"
