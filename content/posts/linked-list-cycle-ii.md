@@ -88,8 +88,10 @@ func two(node *ListNode) *ListNode {
 
 ### Explanation
 
-First `i` pointer goes one step a time, whereas second `j` pointer goes two step a time.
+First `i` pointer goes one step a time, whereas second `j` pointer goes two steps a time.
 When they meet, first `i` pointer will ahead in `T+X` steps, whereas seconds pointer `j` will go ahead on `N*2` steps.
+Second pointer `j` will definitely do one loop before meeting `i`, because it is faster, so it will go `N+M` steps ahead.
+At the same time `j` do two steps in one iteration, therefore `N+M`, must divide on `2`, that gives `M=N` and `N*2` steps for `j`.
 We know that `N=T+X`, whereas `N` is the loop size, `T` is the tail size and `X` is unknown position where pointers will meet.
 By using simple calculous we can find that `T=N-X`
 To find the `T` in loop, we need to continue going till the end of the loop using pointer `i`, that will give us `N-X` steps, and start `j` pointer from the head, since it will go exactly `T` steps, they will definitely meet with each other.
