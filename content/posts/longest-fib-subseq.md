@@ -110,6 +110,45 @@ func max(a, b int) int {
 
 Unsorted array solution:
 ``` go
+func lenLongestFibSubseq(A []int) int {
+
+    n := len(A)
+
+    if n <= 0 {
+        return n
+    }
+
+    T := make([][]int, n)
+
+    for i := 0; i < n; i++ {
+        T[i] = make([]int, n)
+
+        k := 1
+        if i > 0 {
+            k = 2
+        }
+
+        for j := 0; j < n; j++ {
+            T[i][j] = k
+        }
+    }  
+
+    maxSoFar := 0
+
+    for i := 2; i < n; i++ {
+        for j := 1; j < i; j++ {
+            for k := 0; k < j; k++ {
+
+                if A[k] + A[j] == A[i]  {  
+                    T[i][j] = max(T[i][j], T[j][k] + 1)
+                    maxSoFar = max(maxSoFar, T[i][j])
+                }
+            }
+        }
+    }
+
+    return maxSoFar
+}
 ```
 
 ### Explanation
