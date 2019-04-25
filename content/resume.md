@@ -7,23 +7,35 @@ description = "resume"
 
 ## OBJECTIVE
 
-Most relevant positions:
+About:
 
-+ Data Architect
-+ Data Scientist
-+ Deep Learning Researcher  
-+ Backend Software Developer  
-+ Blockchain Platform Developer
+| Key   | Value  |
+| :----:  | :------------: |
+|  Location   | Palo Alto, CA |
+|  Phone   | 65O.241.9O91 |
+|  GitHub   | [alexshvid](https://github.com/alexshvid) |
+|  Twitter   | [@AlexShvid](https://twitter.com/AlexShvid) |
+|  LinkedIn   | [Shvid](https://www.linkedin.com/in/shvid/) |
+
+Who I am:
+
+* Blockchain Platform Architect and Developer
+* Data Architect and Developer
+* Data Scientist and Researcher
+
 
 In sphere of my interests:
 
++ Blockchain technologies: smart contracts, platform design and development.
 + Deep Learning: Machine Learning, Supervised Learning and Reinforcement Learning.
 + Fast Data: Key-Value distributed storages that used for cache and hot data, low-latency systems, five-nines systems.
 + Big Data: Spark and streaming analytics, Hadoop and MapReduce classic offline jobs, big data storages HBase and Cassandra.
-+ Blockchain: platform and framework development.
 
 
 Active participant in open source communities, committer, researcher.
+---------------------------
+
+## OPEN SOURCE
 
 ---------------------------
 
