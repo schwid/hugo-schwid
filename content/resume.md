@@ -5,8 +5,6 @@ thumbnail = "images/tn.png"
 description = "resume"
 +++
 
-## OBJECTIVE
-
 About:
 
 | Key   | Value  |
@@ -17,7 +15,7 @@ About:
 |  Twitter   | [@AlexShvid](https://twitter.com/AlexShvid) |
 |  LinkedIn   | [Shvid](https://www.linkedin.com/in/shvid/) |
 
-Who I am:
+## OBJECTIVE
 
 * Blockchain Platform Architect and Developer
 * Data Architect and Developer
@@ -39,7 +37,7 @@ Active participant in open source communities, committer, researcher.
 ## OPEN SOURCE
 
 | Project  | Role   |   
-| :----:  | :-----: | 
+| :----:  | :-----: |
 | spring-data-cassandra   | founder / commiter |       
 | casser                  | founder            |
 | protostuff              | commiter           |
