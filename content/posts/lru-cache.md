@@ -245,3 +245,5 @@ func (this *LRUCache) Put(key int, value int)  {
 ### Explanation
 
 Double linked-list (dequeue) gives ability to remove entry in the middle on the queue and move it to the back. That what we need in case of touch of the entry.
+
+Complexity O(1) for get and put
