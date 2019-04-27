@@ -36,9 +36,9 @@ Active participant in open source communities, committer, researcher.
 
 ## OPEN SOURCE
 
-| Project                 | Role               |   
+| Project                 | Role               |
 | :---------------------: | :----------------: |
-| spring-data-cassandra   | founder / commiter |       
+| spring-data-cassandra   | founder / commiter |
 | casser                  | founder            |
 | protostuff              | commiter           |
 | consensusdb             | founder            |
