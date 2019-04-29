@@ -110,6 +110,41 @@ func max(a, b int) int {
 }
 ```
 
+Dynamic programming solution:
+``` go
+func maxSumTwoNoOverlap(A []int, L int, M int) int {
+    
+    n := len(A)
+    sum := make([]int, n)
+    sum[0] = A[0]
+    for i := 1; i < n; i++ {
+        sum[i] = sum[i-1] + A[i]
+    } 
+
+    maxSoFar := sum[L+M-1]
+    maxL := sum[L-1]
+    maxM := sum[M-1]
+    
+    for i := L+M; i < n; i++ {
+        maxL = max(maxL, sum[i-M] - sum[i-M-L])
+        maxM = max(maxM, sum[i-L] - sum[i-L-M])
+        m := max(sum[i] - sum[i-M] + maxL, sum[i] - sum[i-L] + maxM)
+        maxSoFar = max(maxSoFar, m)
+    }
+
+    return maxSoFar
+    
+}
+
+func max(a, b int) int {
+    if a >= b {
+        return a
+    } else {
+        return b
+    }
+}
+```
+
 ### Explanation
 
 There are two options of maximum sum solution:
@@ -118,4 +153,10 @@ There are two options of maximum sum solution:
 
 Both problems are dynamic programming tasks, where size of 2D matrix is `m+1*m+1`, whereas `m=n-L-M`.
 We place the first sub-array at the beginning of array `A` and second sub-array at the end of array `A` and finding all sums in the middle.
-Max sum is our solution.
+Max sum is our solution. The complexity of this algorithm `O((n-L-M)^2)`
+
+Another way to solve this problem is to summarize the array `A` and each time when we want to calculate sum of sub-array with length `X` we need to subtract `sum[i]-sum[i-X]`. 
+
+We can use 3 variables: `maxSoFar`, `maxL`, `maxM`, they all max so far meaning, and in each iteration we update by finding maximum of placing both sub-arrays, max of placing sub-array `L` and max of placing sub-array `M` in the slice `A[:i+1]`.
+We have `n-M-L` options and `O(n-M-L)` iterations to check all possible combinations that complain the condition one array in fron of another in this maximization statement `max(sum[i] - sum[i-M] + maxL, sum[i] - sum[i-L] + maxM)`.
+
