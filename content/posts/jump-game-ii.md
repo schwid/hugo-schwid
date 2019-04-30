@@ -78,6 +78,54 @@ func max(a, b int) int {
 }
 ```
 
+BFS solution
+``` go
+func jump(nums []int) int {
+    
+    n := len(nums)
+    if n <= 1 {
+        return 0
+    }
+ 
+    steps := nums[0]
+    if steps >= n-1 {
+        return 1
+    }
+    
+    maxSoFar, maxIndex := 0, 0
+    
+    for i := 1; i <= steps; i++ {
+        
+        nextSteps := i + nums[i]
+        
+        if nextSteps >= n-1 {
+            // we achieved the last index
+            return 2
+        }
+        
+        if maxSoFar < nextSteps {
+            maxSoFar = nextSteps
+            maxIndex = i
+        }
+        
+    }
+  
+    if maxIndex == 0 {
+        panic("no solution")
+    }
+    
+    return 1 + jump(nums[maxIndex:])
+}
+
+func min(a, b int) int {
+    if a < b {
+        return a
+    } else {
+        return b
+    }
+}
+```
+
 ### Explanation
 
 The first solution that come in mind is dynamic programming approach based on more simple version of this problem "Jump Game".
