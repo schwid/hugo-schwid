@@ -158,8 +158,48 @@ func camelMatch(queries []string, pattern string) []bool {
 }
 ```
 
+Skip lowercase solution
+``` go
+
+func isLowercase(ch byte) bool {
+    return ch >= 'a' && ch <= 'z'
+}
+
+func camelMatch(queries []string, pattern string) []bool {
+     
+    n := len(pattern)
+    
+    ret := []bool{}
+    
+    for _, q := range queries {
+        
+        m := len(q)
+        i, j := 0, 0
+        
+        for j < m {
+            
+            if i < n && q[j] == pattern[i] {
+                j++
+                i++
+            } else if isLowercase(q[j]) {
+                j++
+            } else {
+                break
+            }
+            
+        }
+        
+        ret = append(ret, i == n && j == m)
+    }
+
+    return ret
+}
+```
+
+
 ### Explanation
 
 We need to compile pattern in to the form where we split all lemmas that are substrings with upper or lower case.
 Based on flag we have different compare logic between lemmas from queries.
 
+Another way to solve this problem is to skip all lower case characters that does not exist in pattern.
