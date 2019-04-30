@@ -126,7 +126,45 @@ func min(a, b int) int {
 }
 ```
 
+Optimized BFS solution
+``` go
+func jump(nums []int) int {
+    
+    n := len(nums)
+    if n <= 1 {
+        return 0
+    }
+
+    steps := 1
+    i, m := 0, nums[0]
+    for m > 0 {
+        if m >= n-1 {
+            return steps
+        }
+        steps++
+        maxSoFar := 0
+        for ;i <= m; i++ {
+            maxSoFar = max(maxSoFar, i + nums[i])
+            if maxSoFar >= n-1 {
+                return steps
+            }
+        }
+        m = maxSoFar
+    }
+    return -1
+}
+
+func max(a, b int) int {
+    if a > b {
+        return a
+    } else {
+        return b
+    }
+}
+```
+
 ### Explanation
 
 The first solution that come in mind is dynamic programming approach based on more simple version of this problem "Jump Game".
 But, this solution is not optimal. There is another one based on BFS with recursion.
+It is also possible to optimize BFS solution for better performace by removing recursion. We already know the maxinum next index, all we need to continue the loop by incrementing steps.
