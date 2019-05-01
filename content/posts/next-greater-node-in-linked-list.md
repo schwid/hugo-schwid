@@ -84,3 +84,95 @@ func nextLarger(nums []int, val int) int {
 ### Explanation
 
 The simple O(n*n) solution could be to store data in array and use calculation function to find next bigger element in array.
+
+Lets find the worst case when this solution will take O(n*n) time and try to optimize it.
+
+The worst case would be this:
+```
+[1,0,1,0,1,0...1]
+```
+That have to became inverted in result to this:
+```
+[0,1,0,1,0,1...0]
+```
+In order to solve and optimize this problem, we need to calculate maxSoFar values from the end to begin of the list.
+Of course, we need to transform the linked-list to array first, and then do those manipulations.
+The second step would be to look forward not more than on 5 digist (any threashold is valid here) that will give ability to find next larger number near the current one. And final step is to fill gaps for elements that left.
+We need to prepare result array, as well as visit (done) array to track what elements are left.
+
+### Solution
+
+Here is the optimized solution
+
+``` go
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func nextLargerNodes(head *ListNode) []int {
+    list := []int{}
+    
+    for node := head; node != nil; node = node.Next{
+        list = append(list, node.Val)     
+    }
+    
+    n := len(list)
+    if n == 0 {
+        return list
+    }
+
+    dp := make([]int, n)
+    maxSoFar := 0
+    for i := n-1; i >= 0; i-- {
+        dp[i] = maxSoFar
+        maxSoFar = max(maxSoFar, list[i])
+    } 
+    
+    ret := make([]int, n)
+    done := make([]bool, n)
+    
+    for i := 0; i < n; i++ {
+        if list[i] >= dp[i] {
+            ret[i], done[i] = 0, true
+        } else {
+            ret[i], done[i] = nextLarger(list[i+1:], list[i], 5)
+        }
+    }
+    
+    for i := 0; i < n; i++ {
+        if !done[i] {
+            ret[i], done[i] = nextLarger(list[i+1:], list[i], n)
+        }
+    }
+    
+    return ret
+}
+
+func nextLarger(nums []int, val, limit int) (int, bool) {
+    for _, n := range nums {
+        if n > val {
+            return n, true
+        }
+        limit--
+        if limit == 0 {
+            break
+        }
+    }
+    return val, false
+}
+
+func max(a, b int) int {
+    if a > b {
+        return a
+    } else {
+        return b
+    }
+}
+```
+
+
+
+
