@@ -134,3 +134,70 @@ func max(a, b int) int {
 ### Explanation
 
 This is a good example of recursive solution with caching.
+
+### Solutions
+
+Another way to solve this problem is to use Dynamic Programming to transform it to the "Jump Game II".
+
+``` go
+
+func videoStitching(clips [][]int, T int) int {
+    
+    dp := make([]int, T+1)
+    
+    for _, clip := range clips {
+        j := clip[0]
+        if j < T {
+            dp[j] = max(dp[j], clip[1])
+        }
+    }
+ 
+    // make relative numbers
+    for i := 0; i < T; i++ {
+        dp[i] = max(0, dp[i] - i)
+    }
+    
+    // now this is a jump game
+    return jump(dp)
+}
+
+// this solution is from Jump Game II
+func jump(nums []int) int {
+    
+    n := len(nums)
+    if n <= 1 {
+        return 0
+    }
+
+    steps := 1
+    i, m := 0, nums[0]
+    for m > 0 {
+        if m >= n-1 {
+            return steps
+        }
+        steps++
+        maxSoFar := 0
+        for ;i <= m; i++ {
+            maxSoFar = max(maxSoFar, i + nums[i])
+            if maxSoFar >= n-1 {
+                return steps
+            }
+        }
+        m = maxSoFar
+    }
+    return -1
+}
+
+func max(a, b int) int {
+    if a > b {
+        return a
+    } else {
+        return b
+    }
+}
+```
+
+### Explanation
+
+This is the best performance solution with O(n) complexity. The part of the code took from "Jump Game II" post.
+
