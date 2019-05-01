@@ -72,6 +72,42 @@ func canThreePartsEqualSum(A []int) bool {
 }
 ```
 
+Another way to solve this problem is to split the sum in two 3 parts.
+
+Faster solution
+``` go
+func canThreePartsEqualSum(A []int) bool {
+    
+    n := len(A)
+    
+    sum := 0
+    for _, v := range A {
+        sum += v
+    }
+    
+    if sum % 3 != 0 {
+        return false
+    }
+    
+    partSum := sum / 3
+    j := 0
+    
+    s := 0
+    for i := 0; i < n; i++ {
+        
+        s += A[i]
+        if s == partSum {
+            j++
+            s = 0
+        }
+        
+    }
+    
+    return s == 0 && j == 3
+
+}
+```
+
 ### Explanation
 
 If we precalculate the total sum of array, we can solve this problem by going through all combinations between first sub-array `[0,i]`, second sub-array `[i+1,j]` and the third subarray `[j+1,n-1]`.
