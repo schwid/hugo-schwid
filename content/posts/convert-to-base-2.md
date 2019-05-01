@@ -61,7 +61,7 @@ func baseNeg2(N int) string {
     // 14-10010
     // 15-10011
     
-    b := make([]int, 40)
+    b := make([]int, 66)
     
     v := N
     idx := 0
