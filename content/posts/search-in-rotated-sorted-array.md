@@ -92,5 +92,7 @@ func binarySearch(nums []int, offset int, target int) int {
 
 ### Explanation
 
-BinarySearch problem with complexity `O(log(n))`.
+This problem could be transformed to binary-search sub-problem or reduced to the same search problem, total complexity is `O(log(n))`.
+
+In each iteration we calculate `mi` middle value between `lo` low and `hi` high in interval `[lo, hi)`. By splitting array in to two sub-arrays we end-up with two situations: one sub-array is sorted, another one is the half-problem of existing problem. We need to check what part of sub-array is sorted by comparing 'nums[lo] and nums[mi]', for sorted left part they will complain with condition 'nums[lo] < nums[mi]'. If `target` value is between `nums[lo]` and `nums[mi]` then this left sub-array is a binary search sub-problem, overwise we select another sub-array as sub-problem of original search, and so on.
 
