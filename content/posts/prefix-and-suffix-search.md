@@ -102,7 +102,7 @@ Here is the solution
 
 ### Another solution
 
-Trait solution
+Trie 27 solution
 ``` go
 const (
     trieSize = 27
@@ -337,4 +337,4 @@ func (this *WordFilter) F(prefix string, suffix string) int {
 
 ### Explanation
 
-Trait is always a faster solution compare to hash map.
+Trie is always a faster solution compare to hash map.
