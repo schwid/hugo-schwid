@@ -217,7 +217,7 @@ func (this *WordFilter) F(prefix string, suffix string) int {
  */
 ```
 
-We can optimize a little bit put operation, just to remove not nesessary loop for prefix inside the trait and get better performance. 
+We can reverse prefix and suffix in trie storage, in this case it would be easy to add entries.
 Here we go:
 
 ``` go
@@ -256,23 +256,29 @@ func (t *trie) upsert(idx int) *trie {
     return c
 }
 
-func (t *trie) put(suffix string, weight int) {
+func (t *trie) put(prefix, suffix string, weight int) {
     node := t
     for _, ch := range suffix {
         idx := int(ch - 'a' + 1)
-        node = node.upsert(idx)
+        node = node.upsert(idx)    
     }
+    node = node.upsert(0)
     node.weight = weight
+    for _, ch := range prefix {
+        idx := int(ch - 'a' + 1)
+        node = node.upsert(idx)    
+        node.weight = weight
+    }
 }
 
 func (t *trie) get(prefix, suffix string) int {
     node := t
-    for _, ch := range prefix {
+    for _, ch := range suffix {
         idx := int(ch - 'a' + 1)
         node = node.find(idx)    
     }
     node = node.find(0)
-    for _, ch := range suffix {
+    for _, ch := range prefix {
         idx := int(ch - 'a' + 1)
         node = node.find(idx)    
     }    
@@ -287,25 +293,17 @@ func Constructor(words []string) WordFilter {
     
     root := &trie{ make([]*trie, trieSize), -1 }
     
-    for index, w := range words {
+    for weight, w := range words {
         n := len(w)
-        var node *trie
-        for i := 0; i <= min(n, 10); i++ {
-            if i == 0 {
-                node = root
-            } else {
-                idx := int(w[i-1] - 'a' + 1)
-                node = node.upsert(idx)
-            }
-            prefix := node.upsert(0)
-            for j := max(0, n-10); j <= n; j++ {
-                suffix := w[j:]         
-                prefix.put(suffix, index)
-            }
+        prefix := w[:min(n, 10)] 
+        for j := max(0, n-10); j <= n; j++ {
+            suffix := w[j:]         
+            root.put(prefix, suffix, weight)
         }
     }
     
     return WordFilter{root}
+    
 }
 
 func min(a, b int) int {
@@ -337,4 +335,4 @@ func (this *WordFilter) F(prefix string, suffix string) int {
 
 ### Explanation
 
-Trie is always a faster solution compare to hash map.
+Trie is always faster solution than hash map.
