@@ -65,7 +65,7 @@ disqusShortname = "alexshvid" # Enable or disable Disqus.
 
 # Menu links
 [[menu.main]]
-    name = "Blog"
+    name = "Code"
     weight = 1
     url  = "posts"
 #[[menu.main]]
