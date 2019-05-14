@@ -84,6 +84,24 @@ func min(arr ...int) int {
 }
 ```
 
+Python version
+``` python
+def edit_distance(s1, s2):
+    n, m = len(s1), len(s2)
+    dp = [None] * (n+1)
+    dp[0] = [i for i in range(m+1)]
+    for i in range(1, n+1):
+        dp[i] = [0 for _ in range(m+1)]
+        dp[i][0] = i     
+    for i in range(1, n+1):
+        for j in range(1, m+1):
+            cost = 0
+            if s1[i-1] != s2[j-1]:
+                cost = 1
+            dp[i][j] = min(dp[i-1][j-1] + cost, dp[i-1][j] + 1, dp[i][j-1] + 1)           
+    return dp[n][m]
+```
+
 ### Explanation
 
 Lets build dynamic programming 2D matrix with the size `n+1, m+1`
