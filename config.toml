@@ -19,7 +19,7 @@ disqusShortname = "alexshvid" # Enable or disable Disqus.
     info = "Deep Learning Engineer" # Author's job title or info.
     description = "Alex Shvid's personal website" # Site description.
     keywords = "blog,developer,personal" # Site keywords.
-    avatarurl = "images/avatar.jpg" # Contain the path of the optionnal avatar in the static folder.
+    avatarurl = "images/alexshvid.jpg" # Contain the path of the optionnal avatar in the static folder.
 
     footercontent = "Enter a text here." # Add footer content
     fixedbarContent = "Do you want to know me more private?→" # Add fixedbar content
