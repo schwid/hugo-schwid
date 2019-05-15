@@ -38,28 +38,27 @@ func maxScoreSightseeingPair(A []int) int {
     if n <= 1 {
         return 0
     }
-    maxSoFar, i := 0, 0
-    for j := 1; j < n; j++ {
-        iMax, ii := 0, i
-        for k := i; k < j; k++ {
-            iMax, ii = max(iMax, ii, A[k] + k + A[j] - j, k)
-        }
-        maxSoFar, i = max(maxSoFar, i, iMax, ii)
+    
+    maxSoFar, spotA := 0, A[0] + 0 - 1
+    
+    for j := 1; j < n; j, spotA = j + 1, spotA - 1 {
+        maxSoFar = max(maxSoFar, A[j] + spotA)
+        spotA = max(spotA, A[j])
     }
+        
     return maxSoFar
 }
 
-func max(a, ia, b, ib int) (int, int) {
+func max(a, b int) int {
     if a > b {
-        return a, ia
+        return a
     } else {
-        return b, ib
+        return b
     }
 }
 ```
 
 ### Explanation
 
-Lets create a `max` function that will take two values for compare and also two indexes in array.
-Now, algorithm is simple, we need to check sums in interval between `[i, j)` for spotA on each iteration for spotB.
-MaxSoFar is our final response.
+Track max value for if spot A located in `spotA`. Every time decrement, to match requirement `i-j`. On each step update spotA by moving this spot forward.
+
