@@ -61,7 +61,7 @@ func countTriplets(A []int) int {
 }
 ```
 
-Pairs solution:
+Pairs solution (fastest):
 ``` go
 func countTriplets(A []int) int {
     pairs := make([]int, 65536)
@@ -83,6 +83,28 @@ func countTriplets(A []int) int {
 }
 ```
 
+Dynamic programming solution:
+``` go
+func countTriplets(A []int) int {
+    n := 65536
+    dp := make([]int, n)
+    other := make([]int, n)
+    dp[n-1] = 1
+    for k := 0; k < 3; k++ {
+        for i := range other {
+            other[i] = 0
+        }
+        for i := 0; i < n; i++ {
+            for _, a := range A {
+                other[i & a] += dp[i]
+            }
+        }
+        dp, other = other, dp
+    }
+    return dp[0]
+}
+```
+
 ### Explanation
 
 Lets start with brute force solution and then take a look how we can optimize it.
@@ -90,6 +112,8 @@ Given brute force solution has `O(n*n*n)` compexity, lets try to improve it a li
 If we group elements in pairs and use information that max value is `2^16=65535`, then we can
 convert this problem in to `O(n*n)` one.
 
+Another way to solve this problem is to use dynamic programming. 
+Unfortunatelly, performance of this solution is not better than pairs approach.
 
 
 
