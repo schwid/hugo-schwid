@@ -105,6 +105,76 @@ func countTriplets(A []int) int {
 }
 ```
 
+Trie solution:
+``` go
+const (
+    maxBits = 16
+)
+
+type trie struct {
+    f   *trie
+    t   *trie
+    cnt int
+}
+
+func (t *trie) add(val int) {
+    node := t
+    for i := 0; i < maxBits; i++ {
+        if val & 1 == 0 {
+            if node.f == nil {
+                node.f = &trie{nil, nil, 0}
+            }
+            node = node.f
+        } else {
+            if node.t == nil {
+                node.t = &trie{nil, nil, 0}
+            }         
+            node = node.t
+        }
+        val >>= 1
+    }
+    node.cnt++
+}
+
+func (t *trie) sum(val int) int {
+    return t.dfs(val, 0)
+}
+
+func (t *trie) dfs(val, depth int) int {
+    if depth == maxBits {
+        return t.cnt
+    }
+    cnt := 0
+    if val & 1 == 0 {
+        if t.f != nil {
+            cnt += t.f.dfs(val >> 1, depth + 1)
+        }
+        if t.t != nil {
+            cnt += t.t.dfs(val >> 1, depth + 1)
+        }
+    } else {
+        if t.f != nil {
+            cnt += t.f.dfs(val >> 1, depth + 1)
+        }
+    }
+    return cnt
+}
+
+func countTriplets(A []int) int {
+    root := trie{nil, nil, 0}
+    for _, a := range A {
+        for _, b := range A {
+            root.add(a & b)
+        }
+    }
+    cnt := 0
+    for _, a := range A {
+        cnt += root.sum(a)
+    }
+    return cnt
+}
+```
+
 ### Explanation
 
 Lets start with brute force solution and then take a look how we can optimize it.
@@ -115,5 +185,6 @@ convert this problem in to `O(n*n)` one.
 Another way to solve this problem is to use dynamic programming. 
 Unfortunatelly, performance of this solution is not better than pairs approach.
 
-
+Definitely, this problem has to be solved by using `trie`. In order to solve it lets create binary trie with two
+values true (t) and false (f). First time we count all pairs (a & b), second time we are using DFS (deep first search) to calculate `cnt`. This is also `O(n*n)` and works well.
 
