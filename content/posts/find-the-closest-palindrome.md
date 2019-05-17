@@ -27,8 +27,6 @@ If there is a tie, return the smaller one as answer.
 
 Golang:
 ``` go
-import "strings"
-
 func nearestPalindromic(S string) string {
     
     value := toInt(S)
