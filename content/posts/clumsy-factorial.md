@@ -82,7 +82,7 @@ func clumsy(N int) int {
     if N > 4 {
       return N + precompute[N % 4]
     }
-    return N + precompute[N + 3];
+    return N + precompute[N + 3]
 }
 ```
 
