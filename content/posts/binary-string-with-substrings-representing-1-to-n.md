@@ -34,6 +34,21 @@ Note:
 ### Solution
 
 Simple solution:
+``` go
+func queryString(S string, N int) bool {
+    n := int64(N)
+    for i := int64(1); i <= n; i++ {
+        s := strconv.FormatInt(i, 2)
+        if strings.Index(S, s) == -1 {
+            return false
+        }
+    }
+    return true
+}
+```
+
+Visitor solution:
+``` go
 func queryString(S string, N int) bool {
     
     n := len(S)    
@@ -93,10 +108,13 @@ func parse(A string, n int) int {
     }
     return val
 }
-``` go
 ```
 
 ### Explanation
+
+Simple solution is to go through all numbers form 1 to N and check their presence in the S string.
+
+Another way:
 
 We need to create an array or set to keep track of visited numbers.
 If all numbers from 1 to N are visited, then return answer is true.
