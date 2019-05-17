@@ -75,7 +75,7 @@ func clumsy(N int) int {
 }
 ```
 
-Mathemetics solution:
+Mathematics solution:
 ``` go
 func clumsy(N int) int {
     precompute := []int{1, 2, 2, -1, 0, 0, 3, 3}
