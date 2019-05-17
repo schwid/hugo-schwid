@@ -75,6 +75,17 @@ func clumsy(N int) int {
 }
 ```
 
+Mathemetics solution:
+``` go
+func clumsy(N int) int {
+    precompute := []int{1, 2, 2, -1, 0, 0, 3, 3}
+    if N > 4 {
+      return N + precompute[N % 4]
+    }
+    return N + precompute[N + 3];
+}
+```
+
 ### Explanation
 
 Lets create a simple state machine that will have 4 states:
@@ -88,3 +99,5 @@ Each step we have two values: `sum` and `val`.
 * val is using gor high-priority operations like `mul` and `devide`
 
 Clumsy starts with positive val, but later it will be always negative, because of subtract operation.
+
+Another way to solve this problem is to use mathemetics and convert this problem to `O(1)` formula.
