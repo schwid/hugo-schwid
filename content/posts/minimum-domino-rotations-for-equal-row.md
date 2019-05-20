@@ -82,6 +82,46 @@ func minDominoRotations(A []int, B []int) int {
 }
 ```
 
+If we switch loops, code became more readable:
+``` go
+func minDominoRotations(A []int, B []int) int {
+    
+    n := len(A)
+    
+    minSoFar := n
+    for d := 1; d <= 6; d++ {
+        
+        top, bottom := 0, 0
+        i := 0
+        for ; i < n && (A[i] == d || B[i] == d); i++ {
+            if A[i] != d {
+                top++
+            }
+            if B[i] != d {
+                bottom++
+            }
+        }
+        if i == n {
+            minSoFar = min(minSoFar, min(top, bottom))
+        }
+    }
+
+    if minSoFar == n {
+        return -1
+    } else {
+        return minSoFar
+    }
+}
+
+func min(a, b int) int {
+    if a < b {
+        return a
+    } else {
+        return b
+    }
+}
+```
+
 ### Explanation
 
 Lets solve this problem by using dynamic counters and find min from them.
