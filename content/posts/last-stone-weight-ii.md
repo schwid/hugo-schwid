@@ -63,19 +63,11 @@ func lastStoneWeightII(stones []int) int {
 
     for i := target; i > 0; i-- {
         if dp[i] {
-            return abs(sum - 2 * i)
+            return sum - 2 * i
         }
     }
 
     return 0
-}
-
-func abs(a int) int {
-    if a < 0 {
-        return -a
-    } else {
-        return a
-    }
 }
 ```
 
