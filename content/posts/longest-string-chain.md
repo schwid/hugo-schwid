@@ -49,30 +49,27 @@ func longestStrChain(words []string) int {
         dp[i] = 1
     }
     
+    maxSoFar := 1
     for i := 0; i < n; i++ {
         for j := 0; j < i; j++ {
             
-            if isPredecessor(words[j], words[i]) &&  dp[i] < dp[j] + 1 {
-                dp[i] = dp[j] + 1
+            if isPredecessor(words[j], words[i]) {
+                dp[i] = max(dp[i],  dp[j] + 1)
+                maxSoFar = max(maxSoFar, dp[i])
             }
             
         }
     }
         
-    return maxOf(dp)
+    return maxSoFar
 }
 
-func maxOf(A []int) int {
-    if len(A) == 0 {
-        return 0
+func max(a, b int) int {
+    if a > b {
+        return a
+    } else {
+        return b
     }
-    m := A[0]
-    for _, a := range A[1:] {
-        if m < a {
-            m = a
-        }
-    }
-    return m
 }
 
 func isPredecessor(prev, curr string) bool {
