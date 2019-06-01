@@ -28,7 +28,24 @@ The values of preorder are distinct.
 
 ### Solution
 
-Golang:
+Simple solution:
+``` go
+func bstFromPreorder(preorder []int) *TreeNode {   
+    n := len(preorder)
+    if n == 0 {
+        return nil
+    }
+    v := preorder[0]
+    node := &TreeNode { v, nil, nil }
+    i := 1
+    for ;i < n && preorder[i] < v; i++ {}
+    node.Left = bstFromPreorder(preorder[1:i])
+    node.Right = bstFromPreorder(preorder[i:])
+    return node
+}
+```
+
+Solution with rebuilding tree from bottom:
 ``` go
 /**
  * Definition for a binary tree node.
