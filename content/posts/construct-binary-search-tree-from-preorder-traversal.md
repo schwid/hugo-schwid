@@ -45,7 +45,8 @@ func bstFromPreorder(preorder []int) *TreeNode {
 }
 ```
 
-Solution with rebuilding tree from bottom:
+Solution with rebuilding tree from the bottom (more difficult):
+
 ``` go
 /**
  * Definition for a binary tree node.
