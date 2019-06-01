@@ -1,2 +1,2 @@
 # hugo-schwid
-Alex Shvid Personal Web-Site on Hugo
+Alex Shvid's Personal Web-Site on Hugo
