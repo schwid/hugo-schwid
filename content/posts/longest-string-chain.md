@@ -100,3 +100,80 @@ func isPredecessor(prev, curr string) bool {
 
 Lets transform this task in to the "Find the longest subsequence" and define a special function `isPredecessor` for this purpose.
 We would need to sort words by length to have a sequence.
+
+There is a way to add additional optimization for this solution.
+We need to calculate lengths of strings and do not look too forward for predecessor.
+
+### Solution
+
+Optimized solution:
+``` go
+func longestStrChain(words []string) int {
+    
+    sort.SliceStable(words, func(i, j int) bool {
+        return len(words[i]) < len(words[j])
+    })    
+        
+    n := len(words)
+    dp := make([]int, n)
+    
+    for i := 0; i < n; i++ {
+        dp[i] = 1
+    }
+    
+    for i := 0; i < n; i++ {
+        for j := i-1; j >= 0; j-- {
+            
+            m, n := len(words[j]), len(words[i])
+            
+            if  m + 1 < n {
+                break
+            } else if m + 1 > n {
+                continue
+            }
+            
+            if isPredecessor(words[j], words[i], m, n) &&  dp[i] < dp[j] + 1 {
+                dp[i] = dp[j] + 1
+            }
+            
+        }
+    }
+        
+    return maxOf(dp)
+}
+
+func maxOf(A []int) int {
+    if len(A) == 0 {
+        return 0
+    }
+    m := A[0]
+    for _, a := range A[1:] {
+        if m < a {
+            m = a
+        }
+    }
+    return m
+}
+
+func isPredecessor(prev, curr string, m, n int) bool {
+       
+    if m + 1 != n {
+        return false
+    }
+    
+    j := 0
+    missing := 0
+    for i := 0; i < n; i++ {
+
+        if j < m && prev[j] == curr[i] {
+            j++
+        } else {
+            missing++
+        }
+        
+    }
+
+    return missing == 1 && j == m
+}
+```
+
