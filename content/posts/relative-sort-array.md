@@ -111,4 +111,39 @@ func relativeSortArray(arr1 []int, arr2 []int) []int {
 }
 ```
 
+### Next step
+
+Let's remove sorting by integers on tail and combine counter in one array.
+Here it is the best  solution:
+
+``` go
+func relativeSortArray(arr1 []int, arr2 []int) []int {
+    
+    cache := make([]int, 1001)
+    
+    for _, n := range arr1 {
+        cache[n]++ 
+    }
+    
+    var out []int
+    
+    for _, n := range arr2 {
+        cnt := cache[n]
+        for i := 0; i < cnt; i++ {
+            out = append(out, n)
+        }  
+        cache[n] = 0
+    }
+    
+    for n, cnt := range cache {
+        for i := 0; i < cnt; i++ {
+            out = append(out, n)
+        }
+    }    
+
+    return out
+}
+```
+
+
 
