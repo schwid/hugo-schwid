@@ -102,4 +102,4 @@ func max(a, b int) int {
 ### Explanation
 
 Let's use recursion to visit all nodes in binary tree. Each time we need to check if node is Leaf. For leaf node we can setup MaxDepth in callback function.
-For the rest of nodes we need to make sure that depth of left and right sub-trees is the same and equal to MaxDepth. If this condition matches, then we found lowest common ancestor.
+For the rest of nodes we need to make sure that depth of left and right sub-trees are the same and equal to MaxDepth. If this condition works, then we found lowest common ancestor.
