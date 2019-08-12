@@ -72,3 +72,43 @@ func relativeSortArray(arr1 []int, arr2 []int) []int {
 ### Explanation
 
 The simple solution would be to use maps. 
+
+Let's try to use the fact, that values in arrays are in range [0, 1000], therefore, instead of slow hash maps we can end up with arrays, by decreasing complexity of the task to O(n+m+log(n-m))
+
+
+### Solution with arrays
+
+``` go
+func relativeSortArray(arr1 []int, arr2 []int) []int {
+    
+    dist := make([]int, 1001)
+    for i, v := range arr2 {
+        dist[v] = i + 1
+    }
+    
+    cnt := make([]int, len(arr2))
+    var tail []int
+    
+    for _, v := range arr1 {
+        i := dist[v] - 1
+        if i >= 0 {
+            cnt[i]++
+        } else {
+            tail = append(tail, v)
+        }
+    }
+    
+    sort.Ints(tail)
+    
+    var out []int
+    for i, c := range cnt {
+        for j := 0; j < c; j++ {
+            out = append(out, arr2[i])
+        }
+    }
+    
+    return append(out, tail...)
+}
+```
+
+
