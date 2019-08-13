@@ -95,6 +95,6 @@ func transform(skills []string, cache map[string]int) int {
 
 ### Explanation
 
-All required skills are <= 16, so it can fit in `int`. We can transform all skills in to numbers and use `or` operation to estimate impact of adding the person to the team.
-Let's put teams in to `dp` array, therefore wee can end up with solution in last cell. It is guaranteed an answer exists.
+All required skills are <= 16, so it can fit in `int`. We can transform all skills in to numbers and use `or` operation to estimate impact of adding a person into team.
+Let's put teams in to `dp` array, therefore we can end up with solution in last cell. It is guaranteed an answer exists.
 
