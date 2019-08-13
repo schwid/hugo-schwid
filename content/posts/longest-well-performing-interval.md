@@ -70,4 +70,50 @@ func longestWPI(hours []int) int {
 }
 ```
 
+Another way to solve this problem is to track the last seen max index in map and use it for improving maxSoFar.
+All we are looking for is the sum > 0 of the elements 1 (tiring day) and -1 (non tiring day). The goal is to find the max length interval with that condition.
+
+``` go
+func longestWPI(hours []int) int {
+
+	n := len(hours)
+	if n == 0 {
+		return 0
+	}
+
+	maxSoFar := 0
+	seen := make(map[int]int)
+	score := 0
+    
+	for i := 0; i < n; i++ {
+		if hours[i] > 8 {
+			score += 1
+		} else {
+			score += -1
+		}
+		if score > 0 {
+			maxSoFar = max(maxSoFar, i+1)
+		} else {
+			if _, ok := seen[score]; !ok {
+				seen[score] = i
+			}
+			if v, ok := seen[score-1]; ok {
+				maxSoFar = max(maxSoFar, i - v)
+			}
+		}
+	}
+
+	return maxSoFar
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	} else {
+		return b
+	}
+}
+```
+
+As we see here, for score>0, we always have interval that starts from 0, therefore `max(maxSoFar, i+1)`.
 
