@@ -115,5 +115,5 @@ func max(a, b int) int {
 }
 ```
 
-As we see here, for score>0, we always have interval that starts from 0, therefore `max(maxSoFar, i+1)`. Another case is to find two elements that will give `score - (score-1) = 1`, that is sub-sum equal to `1`. We need to track all early seen indexes of `score` as `seen[score] = i` and search at each step index with store-1 `seen[score-1]` to have a option i-j to check as maxSoFar.
+As we see here, for score>0, we always have interval that starts from 0, therefore `max(maxSoFar, i+1)`. Another case is to find two elements that will give `score - (score-1) = 1`, that is sub-sum equal to `1`. We need to track all early seen indexes of `score` as `seen[score] = i` and search at each step index with store-1 `seen[score-1]` to have a case `i-j` to check in maxSoFar.
 
