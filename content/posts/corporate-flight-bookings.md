@@ -50,4 +50,52 @@ func corpFlightBookings(bookings [][]int, n int) []int {
 }
 ```
 
+Another way to solve this problem is to keep track of visited intervals in cache.
 
+``` go
+
+type interval struct {
+    last int
+    cnt  int
+}
+
+func put(cache map[int]*interval, first, last, k int) {
+    
+    if inter, ok := cache[first]; ok {
+
+        if inter.last == last {
+            inter.cnt += k
+        } else if inter.last < last {
+            inter.cnt += k
+            put(cache, inter.last + 1, last, k)
+        } else {
+            put(cache, last+1, inter.last, inter.cnt)
+            inter.cnt += k
+            inter.last = last
+        }
+        
+    } else {
+        cache[first] = &interval{ last, k }
+    }
+}
+
+func corpFlightBookings(bookings [][]int, n int) []int {
+    
+    cache := make(map[int]*interval)
+    
+    for _, b := range bookings {
+        first, last, k := b[0], b[1], b[2]
+        put(cache, first, last, k)
+    }
+    
+    out := make([]int, n)
+    for k, v := range cache {
+        for i := k; i <= v.last; i++ {
+            out[i-1] += v.cnt
+        }
+    }
+    
+    return out
+    
+}
+```
