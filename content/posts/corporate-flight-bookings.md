@@ -99,3 +99,24 @@ func corpFlightBookings(bookings [][]int, n int) []int {
     
 }
 ```
+
+Fastest way to solve this problem is to calculate sum of all visits:
+
+``` go
+func corpFlightBookings(bookings [][]int, n int) []int {
+	
+ out := make([]int, n+1)
+    
+	for _, b := range bookings {
+		 first, last, k := b[0], b[1], b[2]
+		 out[first-1] += k
+		 out[last] -= k
+	}
+
+	for i := 1; i < n; i++ {
+		 out[i] += out[i-1]
+	}
+
+	return out[:n]
+}
+```
