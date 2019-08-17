@@ -96,6 +96,6 @@ func delNodes(root *TreeNode, to_delete []int) []*TreeNode {
 ### Explanation
 
 Let's go by BFS through nodes and check deletes. Keep track of roots in special array (can be map). Return final values.
-Do not forget to detete actual nodes.
+Do not forget to delete actual nodes.
 
 
