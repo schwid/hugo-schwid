@@ -93,6 +93,7 @@ func min(a, b int) int {
 ```
 
 Let's add small optimization to this solution and to achieve faster performance.
+In this case we need to check maxLength before going with counter for both cases.
 
 ``` go
 func longestPalindrome(s string) string {
