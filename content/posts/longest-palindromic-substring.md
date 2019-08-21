@@ -251,3 +251,101 @@ func min(a, b int) int {
 }
 ```
 
+Let's do another improvement and change from shifted enumerator to zig-zag enumerator by using the folowing algorithm:
+
+``` go
+    for i, k := n/2, 0; k < n; k++ {
+        
+		if k % 2 == 0 {
+			i += k
+		} else {
+			i -= k
+		}
+		i %= n  
+        
+        ...
+    }
+```
+
+This algorithm gives ability to go through `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]` by this way
+`[5, 4, 6, 3, 7, 2, 8, 1, 9, 0]`.
+
+This will improve chance to find the longest substring as early as possible.
+
+Final solution is
+``` go
+func longestPalindrome(s string) string {
+    
+    n := len(s)
+    if n == 0 {
+        return ""
+    }
+    
+    longest := s[:1]
+    maxLength := 1
+    
+    for i, k := n/2, 0; k < n; k++ {
+        
+		if k % 2 == 0 {
+			i += k
+		} else {
+			i -= k
+		}
+		i %= n        
+        
+        cnt := min(i, n-i-1)
+        
+        if 1 + 2*cnt > maxLength {
+        
+            left := s[i]
+            right := s[i]
+
+            for j := 1; j <= cnt && left == right; j++ {
+                left ^= s[i-j]
+                right ^= s[i+j]
+                l := (i+j+1)-(i-j)
+                if left == right && l > maxLength {
+                    longest = s[i-j:i+j+1]
+                    maxLength = l
+                } 
+            }
+        }
+        
+        if i+1 < n {
+            
+            cnt := min(i, n-i-2)   
+            
+            if (1+cnt) * 2 > maxLength {
+            
+                left := byte(0)
+                right := byte(0)
+
+                for j := 0; j <= cnt && left == right; j++ {
+                    left ^= s[i-j]
+                    right ^= s[i+1+j]
+                    l := (i+j+2)-(i-j)
+                    if left == right && l > maxLength {
+                        longest = s[i-j:i+j+2]
+                        maxLength = l
+                    } 
+                }        
+                
+            }
+            
+        }
+        
+    }
+    
+    return longest
+    
+}
+
+func min(a, b int) int {
+    if a < b {
+        return a
+    } else {
+        return b
+    }
+}
+```
+
