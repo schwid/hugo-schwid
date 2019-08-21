@@ -91,3 +91,74 @@ func min(a, b int) int {
     }
 }
 ```
+
+Let's add small optimization to this solution and to achieve faster performance.
+
+``` go
+func longestPalindrome(s string) string {
+    
+    n := len(s)
+    if n == 0 {
+        return ""
+    }
+    
+    longest := s[:1]
+    maxLength := 1
+    
+    for i := 0; i < n; i++ {
+        
+        cnt := min(i, n-i-1)
+        
+        if 1 + 2*cnt > maxLength {
+        
+            left := s[i]
+            right := s[i]
+
+            for j := 1; j <= cnt && left == right; j++ {
+                left ^= s[i-j]
+                right ^= s[i+j]
+                l := (i+j+1)-(i-j)
+                if left == right && l > maxLength {
+                    longest = s[i-j:i+j+1]
+                    maxLength = l
+                } 
+            }
+        }
+        
+        if i+1 < n {
+            
+            cnt := min(i, n-i-2)   
+            
+            if (1+cnt) * 2 > maxLength {
+            
+                left := byte(0)
+                right := byte(0)
+
+                for j := 0; j <= cnt && left == right; j++ {
+                    left ^= s[i-j]
+                    right ^= s[i+1+j]
+                    l := (i+j+2)-(i-j)
+                    if left == right && l > maxLength {
+                        longest = s[i-j:i+j+2]
+                        maxLength = l
+                    } 
+                }        
+                
+            }
+            
+        }
+        
+    }
+    
+    return longest
+    
+}
+
+func min(a, b int) int {
+    if a < b {
+        return a
+    } else {
+        return b
+    }
+}
+```
