@@ -1,4 +1,4 @@
-baseurl = "https://schwid.com/" # Hostname (and path) to the root.
+baseurl = "https://www.schwid.com/" # Hostname (and path) to the root.
 title = "Alex Shvid" # Site title.
 theme = "coder-portfolio" # Set the theme.
 languagecode = "en" # The site’s language code used to generate RSS.
