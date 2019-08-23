@@ -105,6 +105,52 @@ kind of options and check validity of them.
 This altorithm works fine, and gives 8ms execution time, but let's improve performance by using taking in account that tail could be invoked multiple times, 
 therefore caching could improve overal performance.
 
+``` go
+
+func isMatch(s string, p string) bool {
+    cache := make(map[string]bool)
+    return isMatchCache(cache, s, p)
+}
+
+func isMatchCache(cache map[string]bool, s string, p string) bool {
+    
+    key := s + ":" + p
+    
+    if v, ok := cache[key]; ok {
+        return v
+    }
+    
+    ret := isMatchRec(cache, s, p) 
+    cache[key] = ret
+    
+    return ret
+}
+
+func isMatchRec(cache map[string]bool, s string, p string) bool {
+
+	n, m := len(s), len(p)
+	if m == 0 {
+		return n == 0
+	}
+	if m > 1 && p[1] == '*' {
+
+		if isMatchCache(cache, s, p[2:]) {
+			return true
+		}
+
+		for i := 0; i < n && (s[i] == p[0] || p[0] == '.'); i++ {
+			if isMatchCache(cache, s[i+1:], p[2:]) {
+				return true
+			}
+		}
+	} else if n >= 1 && m >= 1 && (s[0] == p[0] || p[0] == '.') {
+		return isMatchCache(cache, s[1:], p[1:])
+	}
+	return false
+}
+```
+
+Recursion with caching gave the same 8ms in performance, it looks like requests are distributed ramdomly and there is no much gain in caching. Let's try another approach.
 
 
 
