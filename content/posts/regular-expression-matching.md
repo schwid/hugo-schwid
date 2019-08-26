@@ -237,7 +237,10 @@ class Solution:
 
 It is very easy to transform golang solution to Python by replacing `and` and `or` operations and brackets.
 
-Performance is 1448ms, that is significantly bigger than Golang or Java.
+Performance is 1448ms, that is significantly bigger than Golang or Java. Python2 with the same code shows even 1580ms. Let's forget about Python...
+
+
+
 
 
 
