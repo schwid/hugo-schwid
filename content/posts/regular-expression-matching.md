@@ -239,7 +239,34 @@ It is very easy to transform golang solution to Python by replacing `and` and `o
 
 Performance is 1448ms, that is significantly bigger than Golang or Java. Python2 with the same code shows even 1580ms. Let's forget about Python...
 
+The fastest solution that is possible in this task is dynamic programming solution.
 
+Here is the golang implementation:
+``` go
+func isMatch(s string, p string) bool {
+    m, n := len(s), len(p)
+    dp := make([][]bool, n+1)
+    dp[0] = make([]bool, m+1)
+    dp[0][0] = true
+    for j := 1; j <= m; j++ {
+        dp[0][j] = m == 0
+    }
+    for i := 1; i <= n; i++ {
+        dp[i] = make([]bool, m+1)
+        dp[i][0] = (p[i-1] == '*') && dp[i-2][0]
+        for j := 1; j <= m; j++ {
+            if p[i-1] == '*' {
+                dp[i][j] = dp[i-2][j] || ((p[i-2] == '.' || p[i-2] == s[j-1]) && dp[i][j-1])
+            } else {
+                dp[i][j] = (p[i-1] == '.' || p[i-1] == s[j-1]) && dp[i-1][j-1]
+            }
+        }
+    }
+    return dp[n][m]
+}
+```
+
+This DP solution works only 0ms and uses very low amount of memory.
 
 
 
