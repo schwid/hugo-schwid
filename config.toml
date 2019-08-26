@@ -3,7 +3,7 @@ title = "Alex Shvid" # Site title.
 theme = "coder-portfolio" # Set the theme.
 languagecode = "en" # The site’s language code used to generate RSS.
 defaultcontentlanguage = "en" # The default content language.
-googleAnalytics = "UA-135001306-1"
+googleAnalytics = "UA-101408014-3"
 
 paginate = 20 # Default number of pages per page in pagination.
 
