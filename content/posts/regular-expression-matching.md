@@ -152,5 +152,25 @@ func isMatchRec(cache map[string]bool, s string, p string) bool {
 
 Recursion with caching gave the same 8ms in performance, it looks like requests are distributed ramdomly and there is no much gain in caching. Let's try another approach.
 
+Let's simplify code in function style and get this simple solution
+``` go
+func isMatch(s string, p string) bool {
+    n, m := len(s), len(p)
+    if m == 0 {
+        return n == 0
+    }
+    matchFirst := n > 0 && (s[0] == p[0] || p[0] == '.')
+    if m > 1 && p[1] == '*' {
+        return isMatch(s, p[2:]) || (matchFirst && isMatch(s[1:], p))
+    } else {
+        return matchFirst && isMatch(s[1:], p[1:])
+    }
+}
+```
+
+It gives 12ms for execution time. This is slower then going through options in iterative method, that gives ideas for optimizations. Functional style of programming is actively using stack, and someetimes this approach is expensive.
+Let's try totaly imperative style solution.
+
+
 
 
