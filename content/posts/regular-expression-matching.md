@@ -253,9 +253,9 @@ func isMatch(s string, p string) bool {
     }
     for i := 1; i <= n; i++ {
         dp[i] = make([]bool, m+1)
-        dp[i][0] = (p[i-1] == '*') && dp[i-2][0]
+        dp[i][0] = (p[i-1] == '*') && (i >= 2) && dp[i-2][0]
         for j := 1; j <= m; j++ {
-            if p[i-1] == '*' {
+            if p[i-1] == '*' && i >= 2 {
                 dp[i][j] = dp[i-2][j] || ((p[i-2] == '.' || p[i-2] == s[j-1]) && dp[i][j-1])
             } else {
                 dp[i][j] = (p[i-1] == '.' || p[i-1] == s[j-1]) && dp[i-1][j-1]
