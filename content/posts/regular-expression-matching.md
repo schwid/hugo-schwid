@@ -168,9 +168,76 @@ func isMatch(s string, p string) bool {
 }
 ```
 
-It gives 12ms for execution time. This is slower then going through options in iterative method, that gives ideas for optimizations. Functional style of programming is actively using stack, and someetimes this approach is expensive.
+It gives 12ms for execution time on Golang. 
+
+The same implementation on Java with slice simulation `(i, n, j, m)`:
+``` java
+class Solution {
+    public boolean isMatch(String text, String pattern) {
+        return isMatchRec(text, 0, text.length(), pattern, 0, pattern.length());
+    }
+    public static boolean isMatchRec(String text, int i, int n, String pattern, int j, int m) {
+        if (m-j == 0) {
+            return n-i == 0;
+        }
+        boolean matchFirst = (n-i > 0 && (text.charAt(i) == pattern.charAt(j) || pattern.charAt(j) == '.'));
+        if (m-j > 1 && pattern.charAt(j+1) == '*') {
+            return isMatchRec(text, i, n, pattern, j+2, m) || (matchFirst && isMatchRec(text, i+1, n, pattern, j, m));
+        } else {
+            return matchFirst && isMatchRec(text, i+1, n, pattern, j+1, m);
+        }
+    }
+}
+```
+
+Gives also 12ms! This is amazing result that shows both language processing similarity with the same code!
+But if you implements Java version with strings:
+
+``` java
+class Solution {
+    public boolean isMatch(String text, String pattern) {
+        if (pattern.isEmpty()) {
+            return text.isEmpty();
+        }
+        boolean matchFirst = (!text.isEmpty() && (pattern.charAt(0) == text.charAt(0) || pattern.charAt(0) == '.'));
+        if (pattern.length() > 1 && pattern.charAt(1) == '*'){
+            return (isMatch(text, pattern.substring(2)) ||
+                    (matchFirst && isMatch(text.substring(1), pattern)));
+        } else {
+            return matchFirst && isMatch(text.substring(1), pattern.substring(1));
+        }
+    }
+}
+```
+
+You will get 55ms execution time. Slice approach in golang gives ability to write simple readable code similar to strings operation code, but keeping performance in the level for index access of data.
+
+
+
+
+
+This is slower then going through options in iterative method, that gives ideas for optimizations. Functional style of programming is actively using stack, and someetimes this approach is expensive.
 Let's try totaly imperative style solution.
 
+Let's see the Python version of the same problem:
+
+``` python
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
+        n, m = len(s), len(p)
+        if m == 0:
+            return n == 0
+        matchFirst = n > 0 and (s[0] == p[0] or p[0] == '.')
+        if m > 1 and p[1] == '*':
+            return self.isMatch(s, p[2:]) or (matchFirst and self.isMatch(s[1:], p))
+        else:
+            return matchFirst and self.isMatch(s[1:], p[1:])
+        
+```
+
+It is very easy to transform golang solution to Python by replacing `and` and `or` operations and brackets.
+
+Performance is 1448ms, that is significantly bigger than Golang or Java.
 
 
 
