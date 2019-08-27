@@ -57,3 +57,41 @@ func max(a, b int) int {
 ```
 
 This approach works 296ms and does not looks like an optional one.
+Another way to solve this problem is to use two pointers in start and end of array.
+
+``` go
+func maxArea(height []int) int {
+    n := len(height)
+    if n < 2 {
+        return 0
+    }
+    i, j, s := 0, n-1, 0
+    for i < j {
+        s = max(s, min(height[i], height[j]) * (j-i))
+        if height[i] < height[j] {
+            i++
+        } else {
+            j--
+        }
+    }
+    return s
+}
+
+func min(a, b int) int {
+    if a < b {
+        return a
+    } else {
+        return b
+    }
+}
+
+func max(a, b int) int {
+    if a > b {
+        return a
+    } else {
+        return b
+    }
+}
+```
+
+This solution give 12ms and has complexity O(n), that could be the best way to go.
