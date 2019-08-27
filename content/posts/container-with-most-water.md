@@ -94,4 +94,4 @@ func max(a, b int) int {
 }
 ```
 
-This solution give 12ms and has complexity O(n), that could be the best way to go.
+This solution gives 12ms and has complexity O(n), that could be the best way to go.
