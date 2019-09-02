@@ -68,10 +68,10 @@ disqusShortname = "alexshvid" # Enable or disable Disqus.
     name = "Code"
     weight = 1
     url  = "posts"
-#[[menu.main]]
-#    name = "Projects"
-#    weight = 2
-#    url  = "projects"
+[[menu.main]]
+    name = "Projects"
+    weight = 2
+    url  = "projects"
 [[menu.main]]
     name = "Resume"
     weight = 3
