@@ -1,7 +1,7 @@
 +++
 date = "2019-09-19"
-title = "Maximum Number of Balloons"
-slug = "Maximum Number of Balloons"
+title = "Reverse Substrings Between Each Pair of Parentheses"
+slug = "Reverse Substrings Between Each Pair of Parentheses"
 tags = []
 categories = []
 +++
