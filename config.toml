@@ -47,6 +47,10 @@ disqusShortname = "alexshvid" # Enable or disable Disqus.
 
 # Social links
 [[params.social]]
+    name = "Blog"
+    weight = 1
+    url = "https://www.alexshvid.com"
+[[params.social]]
     name = "Medium"
     weight = 1
     url = "https://medium.com/@alexshvid"
