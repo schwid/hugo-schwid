@@ -106,4 +106,4 @@ func rangeBitwiseAnd(m int, n int) int {
 }
 ```
 
-This is pretty fast solution shows 16ms.
+This solution is O(32).

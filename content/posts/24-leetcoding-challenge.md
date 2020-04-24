@@ -35,7 +35,8 @@ cache.get(4);       // returns 4
 
 ## Solution
 
-Linked list and map can give LRU functional:
+Classical task for version control. Let's add global revision for the cache and revision of each entry.
+
 
 ``` go
 type entry struct {
@@ -115,5 +116,4 @@ func (this *LRUCache) Put(key int, value int)  {
  * param_1 := obj.Get(key);
  * obj.Put(key,value);
  */
-
 ```
