@@ -1,7 +1,7 @@
 +++
 date = "2020-04-25"
 title = "Jump Game"
-slug = "Jump Game"
+slug = "25 leetcoding challenge"
 tags = []
 categories = []
 +++
