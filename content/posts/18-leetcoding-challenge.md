@@ -1,7 +1,7 @@
 +++
 date = "2020-04-18"
 title = "Minimum Path Sum"
-slug = "Minimum Path Sum"
+slug = "18 leetcoding challenge"
 tags = []
 categories = []
 +++
@@ -107,4 +107,4 @@ func min(a, b int) int {
     }
     return b
 }
-``` 
+```

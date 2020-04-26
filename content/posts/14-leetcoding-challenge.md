@@ -1,7 +1,7 @@
 +++
 date = "2020-04-14"
 title = "Perform String Shifts"
-slug = "Perform String Shifts"
+slug = "14 leetcoding challenge"
 tags = []
 categories = []
 +++

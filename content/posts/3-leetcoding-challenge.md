@@ -1,7 +1,7 @@
 +++
-date = "2020-04-04"
+date = "2020-04-03"
 title = "Maximum Subarray"
-slug = "Maximum Subarray"
+slug = "3 leetcoding challenge"
 tags = []
 categories = []
 +++

@@ -1,7 +1,7 @@
 +++
 date = "2020-04-21"
 title = "Leftmost Column with at Least a One"
-slug = "Leftmost Column with at Least a One"
+slug = "21 leetcoding challenge"
 tags = []
 categories = []
 +++

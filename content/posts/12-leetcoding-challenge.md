@@ -1,7 +1,7 @@
 +++
 date = "2020-04-12"
 title = "Last Stone Weight"
-slug = "Last Stone Weight"
+slug = "12 leetcoding challenge"
 tags = []
 categories = []
 +++

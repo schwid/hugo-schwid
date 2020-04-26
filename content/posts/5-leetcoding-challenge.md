@@ -1,7 +1,7 @@
 +++
-date = "2020-04-06"
+date = "2020-04-05"
 title = "Best Time to Buy and Sell Stock II"
-slug = "Best Time to Buy and Sell Stock II"
+slug = "5 leetcoding challenge"
 tags = []
 categories = []
 +++

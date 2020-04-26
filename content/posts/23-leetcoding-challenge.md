@@ -1,7 +1,7 @@
 +++
 date = "2020-04-23"
 title = "Bitwise AND of Numbers Range"
-slug = "Bitwise AND of Numbers Range"
+slug = "23 leetcoding challenge"
 tags = []
 categories = []
 +++

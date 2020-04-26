@@ -1,7 +1,7 @@
 +++
 date = "2020-04-19"
 title = "Search in Rotated Sorted Array"
-slug = "Search in Rotated Sorted Array"
+slug = "19 leetcoding challenge"
 tags = []
 categories = []
 +++

@@ -1,7 +1,7 @@
 +++
 date = "2020-04-15"
 title = "Product of Array Except Self"
-slug = "Product of Array Except Self"
+slug = "15 leetcoding challenge"
 tags = []
 categories = []
 +++

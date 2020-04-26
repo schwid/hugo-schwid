@@ -1,7 +1,7 @@
 +++
 date = "2020-04-10"
 title = "Min Stack"
-slug = "Min Stack"
+slug = "10 leetcoding challenge"
 tags = []
 categories = []
 +++

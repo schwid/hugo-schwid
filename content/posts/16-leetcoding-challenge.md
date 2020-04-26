@@ -1,7 +1,7 @@
 +++
 date = "2020-04-16"
 title = "Valid Parenthesis String"
-slug = "Valid Parenthesis String"
+slug = "16 leetcoding challenge"
 tags = []
 categories = []
 +++

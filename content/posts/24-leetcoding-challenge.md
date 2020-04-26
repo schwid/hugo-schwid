@@ -1,7 +1,7 @@
 +++
 date = "2020-04-24"
 title = "LRU Cache"
-slug = "LRU Cache"
+slug = "24 leetcoding challenge"
 tags = []
 categories = []
 +++

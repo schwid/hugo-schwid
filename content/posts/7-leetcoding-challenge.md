@@ -1,7 +1,7 @@
 +++
 date = "2020-04-07"
 title = "Counting Elements"
-slug = "Counting Elements"
+slug = "7 leetcoding challenge"
 tags = []
 categories = []
 +++

@@ -1,7 +1,7 @@
 +++
-date = "2020-04-04"
+date = "2020-04-01"
 title = "Single Number"
-slug = "Single Number"
+slug = "1 leetcoding challenge"
 tags = []
 categories = []
 +++

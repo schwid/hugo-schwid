@@ -1,7 +1,7 @@
 +++
 date = "2020-04-08"
 title = "Middle of the Linked List"
-slug = "Middle of the Linked List"
+slug = "8 leetcoding challenge"
 tags = []
 categories = []
 +++

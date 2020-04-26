@@ -1,7 +1,7 @@
 +++
 date = "2020-04-20"
 title = "Construct Binary Search Tree from Preorder Traversal"
-slug = "Construct Binary Search Tree from Preorder Traversal"
+slug = "20 leetcoding challenge"
 tags = []
 categories = []
 +++

@@ -1,7 +1,7 @@
 +++
 date = "2020-04-13"
 title = "Contiguous Array"
-slug = "Contiguous Array"
+slug = "13 leetcoding challenge"
 tags = []
 categories = []
 +++

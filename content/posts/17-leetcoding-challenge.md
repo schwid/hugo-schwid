@@ -1,7 +1,7 @@
 +++
 date = "2020-04-17"
 title = "Number of Islands"
-slug = "Number of Islands"
+slug = "17 leetcoding challenge"
 tags = []
 categories = []
 +++

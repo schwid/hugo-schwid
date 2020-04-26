@@ -1,7 +1,7 @@
 +++
 date = "2020-04-06"
 title = "Group Anagrams"
-slug = "Group Anagrams"
+slug = "6 leetcoding challenge"
 tags = []
 categories = []
 +++

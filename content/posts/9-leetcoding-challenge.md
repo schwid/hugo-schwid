@@ -1,7 +1,7 @@
 +++
 date = "2020-04-09"
 title = "Backspace String Compare"
-slug = "Backspace String Compare"
+slug = "9 leetcoding challenge"
 tags = []
 categories = []
 +++

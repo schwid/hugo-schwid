@@ -1,7 +1,7 @@
 +++
 date = "2020-04-22"
 title = "Subarray Sum Equals K"
-slug = "Subarray Sum Equals K"
+slug = "22 leetcoding challenge"
 tags = []
 categories = []
 +++

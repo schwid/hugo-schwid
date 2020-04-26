@@ -1,7 +1,7 @@
 +++
 date = "2020-04-11"
 title = "Diameter of Binary Tree"
-slug = "Diameter of Binary Tree"
+slug = "11 leetcoding challenge"
 tags = []
 categories = []
 +++

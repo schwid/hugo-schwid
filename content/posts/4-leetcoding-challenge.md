@@ -1,7 +1,7 @@
 +++
 date = "2020-04-04"
 title = "Move Zeroes"
-slug = "Move Zeroes"
+slug = "4 leetcoding challenge"
 tags = []
 categories = []
 +++
