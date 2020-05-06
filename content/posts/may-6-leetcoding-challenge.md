@@ -23,10 +23,11 @@ Output: 2
 
 ## Solution
 
-Major element needs to have count greater as minimum on one of count all the rest element.
-Let's consider situation when all non major elements goes first in array, and then major elements comes.
-In this case all negative count of non major elements would be compensated by positive count of major element
-plus one.
+Major element needs to have count greater as minimum on one of count all the rest elements.
+Let's consider situation when all major elements go before non-major elements in array.
+In this case all negative count of non-major elements would be compensated by positive count of major elements.
+So, it is totally safe to subtract the count if elements do not match. Finally, we anyway will have major element at the end of loop.
+Task is O(n).
 
 
 ``` go
