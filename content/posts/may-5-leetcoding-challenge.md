@@ -1,7 +1,7 @@
 +++
 date = "2020-05-05"
 title = "First Unique Character in a String"
-slug = "may 4 leetcoding challenge"
+slug = "may 5 leetcoding challenge"
 tags = []
 categories = []
 +++
