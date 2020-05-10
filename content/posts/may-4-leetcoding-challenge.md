@@ -1,6 +1,6 @@
 +++
 date = "2020-05-04"
-title = "Ransom Note"
+title = "Number Complement"
 slug = "may 4 leetcoding challenge"
 tags = []
 categories = []
