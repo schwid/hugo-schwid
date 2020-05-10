@@ -155,6 +155,9 @@ Let's simplify this code:
 
 ``` go
 func findJudge(N int, trust [][]int) int {
+    if len(trust) < N-1 {
+      return -1
+    }
     dp := make([]int, N+1, N+1)
     for _, t := range trust {
         dp[t[0]]--
