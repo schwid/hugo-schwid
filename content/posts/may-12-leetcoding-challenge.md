@@ -36,3 +36,28 @@ func singleNonDuplicate(nums []int) int {
     return x
 }
 ```
+
+Another way to solve this task is to use binary search.
+We know that all numbers has pair, therefore for us it would be important to estimate for odd and even mid values their neighbors.
+
+Here is the solution for O(logN)
+
+``` go
+func singleNonDuplicate(nums []int) int {
+	lo, hi := 0, len(nums)
+	for hi - lo >= 3 {
+		mi := (hi - lo) >> 1 + lo
+		if mi % 2 > 0 {
+			mi--
+		}
+		if mi-1 >= lo && nums[mi-1] == nums[mi] {
+			hi = mi-1
+		} else if mi+1 < hi && nums[mi+1] == nums[mi] {
+			lo = mi+2
+		} else {
+			return nums[mi]
+		}
+	}
+	return nums[lo]
+}
+```
