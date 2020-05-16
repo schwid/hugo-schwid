@@ -102,10 +102,10 @@ func maxSubarraySumCircular(A []int) int {
 	dpMin, dpMax, sum, minSoFar, maxSoFar := A[0], A[0], A[0], A[0], A[0]
 	for i := 1; i < n; i++ {
 		dpMin = min(dpMin, 0) + A[i]
-        dpMax = max(dpMax, 0) + A[i]
+    dpMax = max(dpMax, 0) + A[i]
 		sum += A[i]
 		minSoFar = min(minSoFar, dpMin)
-        maxSoFar = max(maxSoFar, dpMax)
+    maxSoFar = max(maxSoFar, dpMax)
 	}
   if sum == minSoFar {
         return maxSoFar
