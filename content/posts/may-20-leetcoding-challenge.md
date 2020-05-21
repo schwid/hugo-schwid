@@ -62,7 +62,7 @@ func kthSmallest(root *TreeNode, k int) int {
     return val
 }
 
-// if found, return val, if not found return k
+// if found return val, if not found return k
 func dfs(root *TreeNode, k int) (found bool, ret int) {
     if root == nil {
         return false, k
