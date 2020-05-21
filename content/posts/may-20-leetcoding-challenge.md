@@ -74,9 +74,6 @@ func dfs(root *TreeNode, k int) (found bool, ret int) {
     if k == 0 {
         return true, root.Val
     }
-    if found, ret = dfs(root.Right, k); found {
-        return
-    }
-    return false, ret
+    return dfs(root.Right, k)
 }
 ```
