@@ -159,4 +159,156 @@ func reverse(arr []int) []int {
 }
 ```
 
-Complexity of this soluition would be `O(n*log(n)*2)
+Complexity of this soluition would be `O(n*log(n)*2)``
+
+Another solution is to use MaxHeap approach.
+
+``` go
+type maxHeap struct {
+	array []int
+	size  int
+	cap   int
+}
+
+func newMaxHeap(maxsize int) *maxHeap {
+	return &maxHeap{
+		array: make([]int, 0, maxsize),
+		size:  0,
+		cap:   maxsize,
+	}
+}
+
+func (t maxHeap) isEmpty() bool {
+	return t.size == 0
+}
+
+func (t maxHeap) leaf(index int) bool {
+	if index >= t.size/2 && index <= t.size {
+		return true
+	}
+	return false
+}
+
+func (t maxHeap) parent(index int) int {
+	return (index - 1) / 2
+}
+
+func (t maxHeap) leftChild(index int) int {
+	return 2*index + 1
+}
+
+func (t maxHeap) rightChild(index int) int {
+	return 2*index + 2
+}
+
+func (t *maxHeap) insert(item int) error {
+	if t.size >= t.cap {
+		return errors.New("Heap is full")
+	}
+	t.array = append(t.array, item)
+	t.size++
+	t.upHeapify(t.size - 1)
+	return nil
+}
+
+func (t *maxHeap) swap(i, j int) {
+	t.array[i], t.array[j] = t.array[j], t.array[i]
+}
+
+func (t *maxHeap) upHeapify(index int) {
+	for t.array[index] > t.array[t.parent(index)] {
+		t.swap(index, t.parent(index))
+		index = t.parent(index)
+	}
+}
+
+func (t *maxHeap) downHeapify(current int) {
+	if t.leaf(current) {
+		return
+	}
+	largest := current
+	leftChildIndex := t.leftChild(current)
+	rightRightIndex := t.rightChild(current)
+	//If current is smallest then return
+	if leftChildIndex < t.size && t.array[leftChildIndex] > t.array[largest] {
+		largest = leftChildIndex
+	}
+	if rightRightIndex < t.size && t.array[rightRightIndex] > t.array[largest] {
+		largest = rightRightIndex
+	}
+	if largest != current {
+		t.swap(current, largest)
+		t.downHeapify(largest)
+	}
+	return
+}
+
+func (t *maxHeap) buildMaxHeap() {
+	for index := t.size/2 - 1; index >= 0; index-- {
+		t.downHeapify(index)
+	}
+}
+
+func (t *maxHeap) remove() int {
+	top := t.array[0]
+	t.array[0] = t.array[t.size-1]
+	t.array = t.array[:t.size-1]
+	t.size--
+	t.downHeapify(0)
+	return top
+}
+
+func maxCandiesMaxHeap(arr []int, k int) int {
+	bags := newMaxHeap(len(arr))
+	for _, val := range arr {
+		bags.insert(val)
+	}
+	bags.buildMaxHeap()
+	total := 0
+	for i := 0; i < k && !bags.isEmpty(); i++ {
+		last := bags.remove()
+		total += last
+		last >>= 1
+		if last > 0 {
+			bags.insert(last)
+		}
+	}
+	return total
+}
+```
+
+Here is the performace testing:
+
+``` go
+n := 10000
+arr := make([]int, n, n)
+for i := 0; i < n; i++ {
+  arr[i] = rand.Intn(n * 10)
+}
+
+start := time.Now()
+totalHeap := 0
+for i := 0; i < n; i++ {
+  totalHeap += maxCandiesMaxHeap(arr, n+1)
+}
+elapsedHeap := time.Now().Sub(start)
+
+start = time.Now()
+totalSort := 0
+for i := 0; i < n; i++ {
+  totalSort += maxCandiesMaxHeap(arr, n+1)
+}
+elapsedSort := time.Now().Sub(start)
+
+fmt.Printf("heap total=%d, elapsed=%f seconds\n", totalHeap, elapsedHeap.Seconds())
+fmt.Printf("sort and merge total=%d, elapsed=%f seconds\n", totalSort, elapsedSort.Seconds())
+```
+
+Results are very interested:
+
+```
+heap total=5814339680000, elapsed=17.385351 seconds
+sort and merge total=5814339680000, elapsed=17.599913 seconds
+```
+
+Performance is almost the same, but heap is a little faster.
