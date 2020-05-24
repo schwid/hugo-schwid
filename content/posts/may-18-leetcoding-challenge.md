@@ -1,6 +1,6 @@
 +++
 date = "2020-05-18"
-title = "Construct Binary Search Tree from Preorder Traversal"
+title = "Permutation in String"
 slug = "may 18 leetcoding challenge"
 tags = []
 categories = []
@@ -8,61 +8,77 @@ categories = []
 
 ## Introduction
 
-Return the root node of a binary search tree that matches the given preorder traversal.
+Given two strings s1 and s2, write a function to return true if s2 contains the permutation of s1. In other words, one of the first string's permutations is the substring of the second string.
 
-(Recall that a binary search tree is a binary tree where for every node, any descendant of node.left has a value < node.val, and any descendant of node.right has a value > node.val.  Also recall that a preorder traversal displays the value of the node first, then traverses node.left, then traverses node.right.)
 
-It's guaranteed that for the given test cases there is always possible to find a binary search tree with the given requirements.
 
 Example 1:
 ```
-Input: [8,5,1,7,10,12]
-Output: [8,5,10,1,7,null,12]
+Input: s1 = "ab" s2 = "eidbaooo"
+Output: True
+Explanation: s2 contains one permutation of s1 ("ba").
 ```
 
-Constraints:
+Example 2:
 ```
-1 <= preorder.length <= 100
-1 <= preorder[i] <= 10^8
-The values of preorder are distinct.
+Input:s1= "ab" s2 = "eidboaoo"
+Output: False
+```
+
+Note:
+```
+The input strings only contain lower case letters.
+The length of both given strings is in range [1, 10,000].
 ```
 
 ## Solution
 
-This is classical task for deserialization.
-If we know that right child always creater than root, sometimes it is faster to find this node and deserialize tree.
+This task is the same as previous one, except return type, we need to return bool not list of indexes. Considering is more simple.
 
 ``` go
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-func bstFromPreorder(preorder []int) *TreeNode {
-    n := len(preorder)
-    if n == 0 {
-        return nil
+func checkInclusion(s1 string, s2 string) bool {
+    ss, pp := []byte(s2), []byte(s1)
+    n, m := len(ss), len(pp)
+    if n < m {
+        return false
     }
-    node := &TreeNode { Val: preorder[0] }
-    for i := 1; i < n; i++ {
-        if preorder[i] > preorder[0] {
-            node.Left = bstFromPreorder(preorder[1:i])
-            node.Right = bstFromPreorder(preorder[i:])
-            return node
+    if m == 0 {
+        return true
+    }
+    var check,dp [26]int
+    for _, ch := range pp {
+        check[ch-'a']++
+    }
+    for _, ch := range ss[:m] {
+        dp[ch-'a']++
+    }
+    if equal(check[:], dp[:], 26) {
+        return true    
+    }
+    for i := m; i < n; i++ {
+        dp[ss[i-m]-'a']--   
+        dp[ss[i]-'a']++  
+        if equal(check[:], dp[:], 26) {
+            return true
         }
     }
-    node.Left = bstFromPreorder(preorder[1:])
-    return node
+    return false
+}
+
+func equal(a, b []int, n int) bool {
+    for i := 0; i < n; i++ {
+        if a[i] != b[i] {
+            return false
+        }
+    }
+    return true
 }
 ```
 
 ## Performance
 
-Hard to make better:
+Good performance:
 ```
 Runtime: 0 ms
-Memory Usage: 3.2 MB
+Memory Usage: 2.9 MB
 ```
