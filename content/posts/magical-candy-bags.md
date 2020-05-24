@@ -289,14 +289,14 @@ for i := 0; i < n; i++ {
 start := time.Now()
 totalHeap := 0
 for i := 0; i < n; i++ {
-  totalHeap += maxCandiesMaxHeap(arr, n+1)
+  totalHeap += maxCandiesMaxHeap(arr, i+1)
 }
 elapsedHeap := time.Now().Sub(start)
 
 start = time.Now()
 totalSort := 0
 for i := 0; i < n; i++ {
-  totalSort += maxCandiesMaxHeap(arr, n+1)
+  totalSort += maxCandiesMaxHeap(arr, i+1)
 }
 elapsedSort := time.Now().Sub(start)
 
