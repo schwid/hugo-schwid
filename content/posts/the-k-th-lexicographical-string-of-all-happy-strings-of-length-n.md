@@ -107,6 +107,16 @@ Memory Usage: 6.8 MB, less than 100.00% of Go online submissions for The k-th Le
 
 Performance of this solution is very low.
 In this case let's generate only k-th element.
+On each step we have 3 intervals: [a...], [b...], [c...], so the selection of the interval is based on k.
+Then we switch to previous intervals that were used to build current ones, we can not have two letters one after another,
+therefore [a...] interval built by `"a" + [b..]` and `"a" + [c..]`
+
+```
+[a...] -> [skip], [b..], [c..] -> plus half
+[b...] -> [a..], [skip], [c..] -> plus half if greater than half
+[c...] -> [a..], [b..], [skip] -> the same
+```
+
 
 ``` go
 func getHappyString(n int, k int) string {
