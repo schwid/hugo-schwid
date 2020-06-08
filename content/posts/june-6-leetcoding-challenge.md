@@ -364,3 +364,40 @@ This solution gives this performance
 Runtime: 96 ms
 Memory Usage: 5.9 MB
 ```
+
+And finally, elegant solution is to track indexes of possible candidates
+
+``` go
+type People  [][]int
+
+func (p People) Len() int           { return len(p) }
+func (p People) Less(i, j int) bool {
+    if p[i][0] == p[j][0] {
+        return p[i][1] > p[j][1]
+    }
+    return p[i][0] < p[j][0]
+}
+func (p People) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
+
+func reconstructQueue(people [][]int) [][]int {
+	sort.Sort(People(people))
+  n := len(people)
+  idx := make([]int, n)
+	for i := 0; i < n; i++ {
+		idx[i] = i
+	}
+	line := make([][]int, n)
+	for _, p := range people {
+		line[idx[p[1]]] = p
+		idx = append(idx[:p[1]], idx[p[1]+1:]...)
+	}
+	return line
+}
+```
+
+
+This solution gives this performance
+```
+Runtime: 12 ms
+Memory Usage: 5.9 MB
+```
