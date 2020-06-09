@@ -1,5 +1,5 @@
 +++
-date = "2019-05-24"
+date = "2020-05-24"
 title = "Count of Smaller Numbers After Self"
 slug = "315. Count of Smaller Numbers After Self"
 tags = []
